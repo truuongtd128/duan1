@@ -132,7 +132,7 @@ ob_start();
 
 
 
-								<li class="cart"><a href="index.php?act=addtocard"><i class="icon-shopping-cart"></i> Giỏ hàng</a></li>
+								<li class="cart"><a href="index.php?act=tatcahoadon"><i class="icon-shopping-cart"></i> Giỏ hàng</a></li>
 								<li class="cart"><a href="index.php?act=dangnhap"></i> Tài Khoản</a></li>
 
 							</ul>

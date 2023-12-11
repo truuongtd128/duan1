@@ -35,7 +35,7 @@
         cursor: pointer;
     }
 </style>
-<form action="index.php?act=sanpham" method="post" class="filter-form">
+<form action="index.php?act=loc" method="post" class="filter-form">
     <div>
         <label for="danhmuc">Danh mục:</label>
         <select name="danhmuc">

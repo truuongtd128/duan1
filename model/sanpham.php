@@ -18,19 +18,19 @@ function sanphamnu()
     $listsp = pdo_query($sql);
     return $listsp;
 }
-// function loadall_sanpham($kyw,$iddm){
-//     $sql = "SELECT * FROM sanpham WHERE 1";
-//     if($kyw!=""){
-//         $sql.= " and name like '%".$kyw."%'";
-//     }
-//     if($iddm>0){
-//         $sql.= " and iddm = '".$iddm."'";
-//     }
-//     $sql.=" ORDER BY id desc ";
-//     $listsanpham = pdo_query($sql);
-//     return $listsanpham;
-// }
-function loadall_sanpham($kyw, $danhmuc, $giatoithieu, $giatoida, $gioitinh)
+function loadall_sanpham($kyw,$iddm){
+    $sql = "SELECT * FROM sanpham WHERE 1";
+    if($kyw!=""){
+        $sql.= " and name like '%".$kyw."%'";
+    }
+    if($iddm>0){
+        $sql.= " and iddm = '".$iddm."'";
+    }
+    $sql.=" ORDER BY id desc ";
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
+}
+function loadall_sanpham_loc($kyw, $danhmuc, $giatoithieu, $giatoida, $gioitinh)
 {
     $sql = "SELECT * FROM sanpham WHERE 1";
 

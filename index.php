@@ -35,18 +35,36 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $spnu=sanphamnu();
                 include "view/wommen.php";
                 break;
-                case 'sanpham':
-                    $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
-                    $danhmuc = isset($_POST['danhmuc']) ? $_POST['danhmuc'] : "";
-                    $gioitinh = isset($_POST['gioitinh']) ? $_POST['gioitinh'] : "";
-                    $giatoithieu = isset($_POST['giatoithieu']) ? $_POST['giatoithieu'] : "";
-                    $giatoida = isset($_POST['giatoida']) ? $_POST['giatoida'] : "";
-            
-                    $dssp = loadall_sanpham($kyw, $danhmuc, $giatoithieu, $giatoida, $gioitinh);
-                    $tendm = load_ten_dm($danhmuc);
+        case 'sanpham':
+                    if ((isset($_POST['kyw'])) && ($_POST['kyw'] != "")) {
+                        $kyw = $_POST['kyw'];
+                    } else {
+                        $kyw = "";
+                    }
+                    if ((isset($_GET['iddm'])) && ($_GET['iddm'] > 0)) {
+                        $iddm = $_GET['iddm'];
+                    } else {
+                        $iddm = 0;
+                    }
+                    $dssp = loadall_sanpham($kyw, $iddm);
+                    $tendm = load_ten_dm($iddm);
                     include "view/sanpham.php";
                     break;
-             
+
+        case 'loc':
+            $kyw = isset($_POST['kyw']) ? $_POST['kyw'] : "";
+            $danhmuc = isset($_POST['danhmuc']) ? $_POST['danhmuc'] : "";
+            $gioitinh = isset($_POST['gioitinh']) ? $_POST['gioitinh'] : "";
+            $giatoithieu = isset($_POST['giatoithieu']) ? $_POST['giatoithieu'] : "";
+            $giatoida = isset($_POST['giatoida']) ? $_POST['giatoida'] : "";
+    
+            $dssp = loadall_sanpham_loc($kyw, $danhmuc, $giatoithieu, $giatoida, $gioitinh);
+            $tendm = load_ten_dm($danhmuc);
+            include "view/sanpham.php";
+            break;
+
+
+         
         case 'sanphamct':
             if ((isset($_GET['idsp'])) && ($_GET['idsp'] > 0)) {
                 $id = $_GET['idsp'];
@@ -208,6 +226,10 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             include "view/cart/hoadon.php";
            
             break;
+        case 'tatcahoadon':
+                $donhang = loadAllHoaDonUser($_SESSION['user']['id']);
+                include "view/cart/hoadon.php";
+                break;
         default:
             include "view/home.php";
             break;

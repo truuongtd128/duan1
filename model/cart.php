@@ -52,24 +52,22 @@ function loadHoaDonUser($id)
 {
     $sql = "SELECT giohang.id, giohang.iddonhang,
     giohang.id_sp, giohang.name, giohang.image, giohang.price,
-    giohang.soluong, donhang.ngaydathang FROM giohang
+    giohang.soluong,donhang.pttt, donhang.ngaydathang FROM giohang
     LEFT JOIN donhang ON giohang.iddonhang = donhang.id
-    WHERE iduser = $id ORDER BY id DESC";
+    WHERE iduser = $id ORDER BY donhang.id DESC LIMIT 1";
     $giohang = pdo_query($sql);
     return $giohang;
 }
-
-if (isset($donhang) && is_array($donhang)) {
-    extract($donhang);
-    // Gán giá trị cho các biến ngaydathang và tongtien
-    $ngaydathang = $donhang[0]['ngaydathang'];
-    $tongtien = 0;
-    foreach ($donhang as $item) {
-        $tongtien += $item['price'] * $item['soluong'];
-    }
+function loadAllHoaDonUser($id)
+{
+    $sql = "SELECT giohang.id, giohang.iddonhang,
+    giohang.id_sp, giohang.name, giohang.image, giohang.price,
+    giohang.soluong,donhang.pttt, donhang.ngaydathang FROM giohang
+    LEFT JOIN donhang ON giohang.iddonhang = donhang.id
+    WHERE iduser = $id ORDER BY donhang.id DESC";
+    $giohang = pdo_query($sql);
+    return $giohang;
 }
-
-
 function loadall_thongke(){
         $sql="select danhmuc.id as madm, danhmuc.name as tendm, count(sanpham.id) as countsp, min(sanpham.price) as minprice, max(sanpham.price) as maxprice, avg(sanpham.price) as avgprice"; 
         $sql.=" from sanpham left join danhmuc on danhmuc.id=sanpham.iddm ";

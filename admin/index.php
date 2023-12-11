@@ -92,7 +92,7 @@
                 $iddm=0;
             }
             $listdanhmuc=loadall_danhmuc();
-            $listsanpham=loadall_sanpham($kyw,$iddm);
+            $listsanpham=loadall_sanpham($kyw, $danhmuc);
             include "sanpham/list.php";
             break;
             case 'xoasp':

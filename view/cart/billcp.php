@@ -100,6 +100,7 @@ if (isset($donhang) && is_array($donhang)) {
           <td>Đơn giá</td>
           <td>Số lượng</td>
           <td>Ngày đặt hàng</td>
+          <td>Phương thức thanh toán</td>
         </tr>
             
         <?php
@@ -112,6 +113,8 @@ if (isset($donhang) && is_array($donhang)) {
                 <td style="padding: 10px">'.$price.'đ</td>
                 <td style="padding: 10px">'.$soluong.' </td>
                 <td style="padding: 10px">'.$ngaydathang.' </td>
+               
+                
                 </tr>';
             } 
             viewCart(1);
